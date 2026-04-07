@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>임플란트 안내 | 서울웅천치과</title>
+  <style>
+    :root {
+      --gold: #C5B098;
+      --dark: #323333;
+      --light: #FAF8F5;
+      --mid: #F0EBE3;
+      --text: #3a3a3a;
+      --gold-dark: #a8957e;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+      background: var(--light);
+      color: var(--text);
+      max-width: 480px;
+      margin: 0 auto;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--dark);
+      color: #fff;
+      padding: 20px 24px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    header .clinic-name {
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      margin-bottom: 2px;
+    }
+    header h1 {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--dark) 0%, #4a4040 100%);
+      color: #fff;
+      padding: 36px 24px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: rgba(197,176,152,0.12);
+    }
+    .hero .badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--dark);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .hero h2 {
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.6;
+    }
+
+    /* ── SECTION ── */
+    section {
+      padding: 32px 20px;
+      border-bottom: 1px solid var(--mid);
+    }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--gold-dark);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .section-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── 4단계 TIMELINE ── */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .step {
+      display: flex;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--mid);
+      position: relative;
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      flex-shrink: 0;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--dark);
+      color: var(--gold);
+      font-size: 14px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .step-body h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+    .step-body p {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.55;
+    }
+    .step-body .duration {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 11px;
+      color: var(--gold-dark);
+      font-weight: 600;
+      background: var(--mid);
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+
+    /* ── FAQ ── */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    details {
+      background: #fff;
+      border: 1px solid var(--mid);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+    details[open] {
+      box-shadow: 0 4px 16px rgba(50,51,51,0.08);
+      border-color: var(--gold);
+    }
+    summary {
+      padding: 16px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--dark);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: '+';
+      font-size: 20px;
+      color: var(--gold);
+      font-weight: 300;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    details[open] summary::after {
+      content: '−';
+    }
+    .faq-answer {
+      padding: 0 18px 16px;
+      font-size: 13px;
+      color: #555;
+      line-height: 1.65;
+      border-top: 1px solid var(--mid);
+      padding-top: 14px;
+    }
+    .faq-answer strong { color: var(--dark); }
+    .faq-answer .tip {
+      margin-top: 10px;
+      background: var(--mid);
+      border-left: 3px solid var(--gold);
+      padding: 8px 12px;
+      border-radius: 0 8px 8px 0;
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* ── 영상 섹션 ── */
+    .video-section {
+      background: var(--mid);
+    }
+    .video-placeholder {
+      background: #fff;
+      border: 2px dashed var(--gold);
+      border-radius: 16px;
+      padding: 36px 20px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .video-placeholder .icon {
+      font-size: 40px;
+      margin-bottom: 12px;
+    }
+    .video-placeholder h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+    .video-placeholder p {
+      font-size: 13px;
+      color: #888;
+      line-height: 1.5;
+    }
+    /* 영상 업로드 후 이 블록을 iframe으로 교체하세요 */
+    /* .video-embed { width: 100%; aspect-ratio: 16/9; border-radius: 12px; } */
+
+    .video-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      border: 1px solid var(--mid);
+    }
+    .video-card .thumb {
+      width: 56px; height: 56px;
+      background: var(--dark);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .video-card h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+    .video-card p {
+      font-size: 12px;
+      color: #888;
+    }
+    .video-card .coming-soon {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--gold-dark);
+      background: var(--mid);
+      padding: 2px 8px;
+      border-radius: 10px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--dark);
+      color: #fff;
+      padding: 32px 20px;
+      text-align: center;
+    }
+    .cta-section h2 {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .cta-section p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .cta-btn {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      background: var(--gold);
+      color: var(--dark);
+      font-size: 15px;
+      font-weight: 800;
+      border: none;
+      border-radius: 12px;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+      cursor: pointer;
+    }
+    .cta-phone {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+    }
+    .cta-phone a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1a1b1b;
+      color: rgba(255,255,255,0.4);
+      padding: 20px 20px;
+      font-size: 11px;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    /* ── 공지 뱃지 ── */
+    .notice-bar {
+      background: var(--gold);
+      color: var(--dark);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 20px;
+      text-align: center;
+      letter-spacing: 0.03em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 상단 알림 -->
+  <div class="notice-bar">✦ 65세 이상 임플란트 건강보험 적용 (본인부담 30%) ✦</div>
+
+  <!-- 헤더 -->
+  <header>
+    <div class="clinic-name">SEOUL WOONGCHEON DENTAL CLINIC</div>
+    <h1>임플란트 안내</h1>
+  </header>
+
+  <!-- 히어로 -->
+  <div class="hero">
+    <div class="badge">EVIDENCE-BASED CARE</div>
+    <h2>자연치아처럼<br/>씹고, 웃고, 말하세요</h2>
+    <p>임플란트는 빠진 치아를 가장 자연스럽게<br/>회복하는 현대 치의학의 표준 치료입니다.</p>
+  </div>
+
+  <!-- ① 4단계 과정 -->
+  <section>
+    <div class="section-label">PROCEDURE</div>
+    <div class="section-title">임플란트 4단계 과정</div>
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>정밀 진단 · 계획 수립</h3>
+          <p>3D CT 촬영으로 뼈 두께·밀도를 분석하고, 개인 맞춤 시술 계획을 수립합니다.</p>
+          <span class="duration">⏱ 당일 진단 가능</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>픽스처 심립 (인공치근 심기)</h3>
+          <p>국소마취 후 티타늄 나사를 턱뼈에 심습니다. 수술 시간은 보통 30~60분, 대부분 통증이 거의 없습니다.</p>
+          <span class="duration">⏱ 30~60분</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>골유착 (뼈와 결합)</h3>
+          <p>티타늄이 뼈와 단단히 결합하는 기간입니다. 이 기간 동안 일상생활은 가능합니다.</p>
+          <span class="duration">⏱ 2~4개월</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>보철 장착 (크라운 연결)</h3>
+          <p>맞춤 제작된 도자기 크라운을 연결합니다. 치료가 완료되면 자연치아와 거의 동일하게 기능합니다.</p>
+          <span class="duration">⏱ 완료</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ② FAQ -->
+  <section>
+    <div class="section-label">FAQ</div>
+    <div class="section-title">자주 묻는 질문</div>
+    <div class="faq-list">
+
+      <details>
+        <summary>수술이 아프지 않나요?</summary>
+        <div class="faq-answer">
+          국소마취 하에 진행하므로 <strong>수술 중 통증은 거의 없습니다.</strong> 마취가 풀린 후 2~3일간 약간의 불편감이 있을 수 있으며, 처방된 진통제로 충분히 조절됩니다.
+          <div class="tip">💡 심한 불안감이 있으신 분은 수면마취(진정)를 병행할 수 있습니다. 상담 시 말씀해 주세요.</div>
+        </div>
+      </details>
+
+      <details>
+        <summary>치료 기간이 얼마나 걸리나요?</summary>
+        <div class="faq-answer">
+          일반적으로 <strong>3~6개월</strong>이 소요됩니다. 뼈 이식이 필요한 경우나 뼈 상태에 따라 기간이 달라질 수 있습니다. 초진 상담 시 CT 분석 후 정확한 기간을 안내해 드립니다.
+        </div>
+      </details>
+
+      <details>
+        <summary>임플란트는 얼마나 오래 사용할 수 있나요?</summary>
+        <div class="faq-answer">
+          올바른 관리 시 <strong>10년 이상, 평생 사용</strong>하는 경우도 많습니다. 성공률은 95% 이상으로 보고됩니다. 정기적인 스케일링과 정기검진이 수명 유지의 핵심입니다.
+          <div class="tip">💡 6개월마다 정기검진을 받으시면 임플란트 주위염을 조기에 예방할 수 있습니다.</div>
+        </div>
+      </details>
+
+      <details>
+        <summary>건강보험이 적용되나요?</summary>
+        <div class="faq-answer">
+          <strong>만 65세 이상</strong>은 평생 2개까지 건강보험 적용을 받습니다(본인부담 30%). 그 외 조건에서는 비급여로 진행되며, 자세한 비용은 상담 후 안내드립니다.
+          <div class="tip">💡 국민건강보험공단 기준, 2024년 이후 65세 이상 건강보험 적용 임플란트 본인부담금은 약 30~50만원 수준입니다.</div>
+        </div>
+      </details>
+
+      <details>
+        <summary>뼈가 부족한 경우에도 가능한가요?</summary>
+        <div class="faq-answer">
+          뼈가 부족하더라도 <strong>뼈이식(골이식) 동시 시술</strong>로 대부분 가능합니다. CT 분석을 통해 정확한 상태를 먼저 확인하는 것이 중요합니다.
+        </div>
+      </details>
+
+      <details>
+        <summary>당뇨·고혈압 환자도 받을 수 있나요?</summary>
+        <div class="faq-answer">
+          조절이 잘 되고 있는 경우 <strong>대부분 시술이 가능</strong>합니다. 다만 혈당·혈압 수치와 복용 중인 약물에 따라 시술 계획이 달라지므로, 반드시 사전 상담에서 알려주세요.
+        </div>
+      </details>
+
+      <details>
+        <summary>수술 후 주의사항은 무엇인가요?</summary>
+        <div class="faq-answer">
+          수술 당일부터 최소 2주간 <strong>금주·금연</strong>이 필요합니다. 음주는 혈관을 확장해 지혈을 방해하고, 흡연은 골유착 성공률을 크게 낮춥니다. 처방된 항생제와 진통제를 빠짐없이 복용하세요.
+          <div class="tip">💡 딱딱한 음식(견과류, 질긴 고기)은 반대편으로 씹는 습관을 들이세요.</div>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- ③ 원장 설명 영상 -->
+  <section class="video-section">
+    <div class="section-label">DOCTOR'S NOTE</div>
+    <div class="section-title">원장 설명 영상</div>
+
+    <!--
+      ★ 영상 업로드 후 아래 placeholder를 iframe으로 교체하세요.
+      예시:
+      <iframe class="video-embed"
+        src="https://www.youtube.com/embed/[VIDEO_ID]"
+        frameborder="0" allowfullscreen></iframe>
+    -->
+    <div class="video-placeholder">
+      <div class="icon">🎬</div>
+      <h3>원장 직접 설명 영상</h3>
+      <p>임플란트 시술에 대해<br/>원장이 직접 설명하는 영상을<br/>곧 업로드할 예정입니다.</p>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <div class="video-card">
+        <div class="thumb">▶</div>
+        <div>
+          <h4>임플란트, 이것만 알면 됩니다</h4>
+          <p>4단계 과정 & 주의사항 핵심 정리</p>
+          <span class="coming-soon">업로드 준비 중</span>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="thumb">▶</div>
+        <div>
+          <h4>뼈이식, 꼭 해야 하나요?</h4>
+          <p>CT로 보는 뼈 상태 판단 기준</p>
+          <span class="coming-soon">업로드 준비 중</span>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="thumb">▶</div>
+        <div>
+          <h4>임플란트 오래 쓰는 관리법</h4>
+          <p>칫솔질·치실·정기검진 루틴</p>
+          <span class="coming-soon">업로드 준비 중</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ④ CTA -->
+  <div class="cta-section">
+    <h2>무료 상담 예약</h2>
+    <p>CT 촬영부터 치료 계획까지<br/>첫 상담은 무료로 진행됩니다.</p>
+    <a class="cta-btn" href="tel:02-0000-0000">📞 전화 예약하기</a>
+    <div class="cta-phone">
+      대표번호 <a href="tel:02-0000-0000">02-0000-0000</a><br/>
+      진료시간 평일 09:00~18:00 / 토 09:00~13:00
+    </div>
+  </div>
+
+  <!-- 푸터 -->
+  <footer>
+    서울웅천치과의원<br/>
+    서울특별시 ○○구 ○○로 ○○○<br/>
+    사업자등록번호 000-00-00000<br/><br/>
+    본 페이지의 내용은 의료법에 따른 의료 광고이며<br/>개인마다 치료 결과가 다를 수 있습니다.
+  </footer>
+
+</body>
+</html>
