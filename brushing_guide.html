@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>올바른 칫솔질 | 서울웅천치과</title>
+  <style>
+    :root {
+      --gold: #C5B098;
+      --dark: #323333;
+      --light: #FAF8F5;
+      --mid: #F0EBE3;
+      --gold-dark: #a8957e;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* 헤더 */
+    header {
+      background: var(--dark);
+      padding: 18px 22px 14px;
+      position: sticky; top: 0; z-index: 100;
+    }
+    header .clinic { font-size: 11px; color: var(--gold); letter-spacing: 0.12em; margin-bottom: 2px; }
+    header h1 { font-size: 19px; font-weight: 800; color: #fff; }
+
+    /* 히어로 */
+    .hero {
+      background: linear-gradient(135deg, var(--dark), #4a3f38);
+      padding: 28px 22px 24px;
+      color: #fff;
+    }
+    .hero .badge {
+      display: inline-block;
+      background: var(--gold); color: var(--dark);
+      font-size: 10px; font-weight: 800;
+      padding: 3px 10px; border-radius: 20px;
+      letter-spacing: 0.08em; margin-bottom: 12px;
+    }
+    .hero h2 { font-size: 24px; font-weight: 800; line-height: 1.25; margin-bottom: 8px; }
+    .hero p { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.6; }
+
+    /* 섹션 */
+    section { padding: 28px 20px; border-bottom: 1px solid var(--mid); }
+    .sec-label { font-size: 10px; font-weight: 800; color: var(--gold-dark); letter-spacing: 0.14em; margin-bottom: 6px; text-transform: uppercase; }
+    .sec-title { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 18px; }
+
+    /* 4단계 스텝 */
+    .steps { display: flex; flex-direction: column; gap: 0; }
+    .step {
+      display: flex; gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--mid);
+      align-items: flex-start;
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      flex-shrink: 0;
+      width: 38px; height: 38px;
+      background: var(--dark); color: var(--gold);
+      border-radius: 50%;
+      font-size: 16px; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .step-body h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .step-body p { font-size: 13px; color: #666; line-height: 1.55; }
+    .step-body .tip {
+      margin-top: 8px; background: var(--mid);
+      border-left: 3px solid var(--gold);
+      padding: 7px 10px; border-radius: 0 6px 6px 0;
+      font-size: 12px; color: #666;
+    }
+
+    /* 일러스트 박스 */
+    .illust-box {
+      background: var(--dark);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .illust-svg { flex-shrink: 0; }
+    .illust-box p { font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.6; }
+    .illust-box strong { color: var(--gold); }
+
+    /* 근거 박스 */
+    .evidence-box {
+      background: #fff;
+      border: 1px solid var(--mid);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin-top: 4px;
+    }
+    .evidence-box .ev-label {
+      font-size: 9px; font-weight: 800;
+      color: var(--gold-dark); letter-spacing: 0.12em;
+      margin-bottom: 6px;
+    }
+    .evidence-box p { font-size: 12.5px; color: #555; line-height: 1.6; font-style: italic; }
+    .evidence-box .ev-source { font-size: 10px; color: #aaa; margin-top: 6px; }
+
+    /* 자주 묻는 질문 */
+    details {
+      background: #fff; border: 1px solid var(--mid);
+      border-radius: 10px; overflow: hidden; margin-bottom: 10px;
+    }
+    details[open] { border-color: var(--gold); }
+    summary {
+      padding: 14px 16px; font-size: 13.5px; font-weight: 600;
+      cursor: pointer; list-style: none;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: '+'; font-size: 18px; color: var(--gold); }
+    details[open] summary::after { content: '−'; }
+    .faq-ans { padding: 0 16px 14px; font-size: 13px; color: #555; line-height: 1.65; border-top: 1px solid var(--mid); padding-top: 12px; }
+
+    /* 추천 제품 */
+    .product-card {
+      background: var(--dark); border-radius: 12px; padding: 16px 18px;
+      display: flex; gap: 14px; align-items: center;
+    }
+    .product-icon {
+      width: 48px; height: 48px; border-radius: 10px;
+      background: var(--gold); display: flex; align-items: center;
+      justify-content: center; font-size: 24px; flex-shrink: 0;
+    }
+    .product-card h4 { font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 3px; }
+    .product-card p { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.45; }
+    .product-card .price { font-size: 16px; font-weight: 800; color: var(--gold); margin-top: 6px; }
+
+    /* 영상 */
+    .video-card {
+      background: #fff; border: 1px solid var(--mid);
+      border-radius: 12px; padding: 14px 16px;
+      display: flex; gap: 12px; align-items: center; margin-bottom: 10px;
+    }
+    .video-thumb {
+      width: 52px; height: 52px; background: var(--dark);
+      border-radius: 8px; display: flex; align-items: center;
+      justify-content: center; font-size: 20px; flex-shrink: 0;
+    }
+    .video-card h4 { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
+    .video-card p { font-size: 11px; color: #888; }
+
+    /* CTA */
+    .cta { background: var(--dark); padding: 28px 20px; text-align: center; }
+    .cta h2 { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+    .cta p { font-size: 13px; color: rgba(255,255,255,0.55); margin-bottom: 20px; }
+    .cta-btn {
+      display: block; width: 100%; padding: 15px;
+      background: var(--gold); color: var(--dark);
+      font-size: 15px; font-weight: 800;
+      border-radius: 12px; text-decoration: none;
+    }
+
+    /* 코크란 리뷰 설명 박스 */
+    .cochrane-explain {
+      background: linear-gradient(135deg, #f5f0e8, #ede7db);
+      border: 1.5px solid var(--gold);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin-bottom: 18px;
+    }
+    .cochrane-explain .ce-header {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
+    }
+    .cochrane-explain .ce-icon {
+      width: 28px; height: 28px; background: var(--gold);
+      border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; font-size: 13px; flex-shrink: 0;
+    }
+    .cochrane-explain .ce-label {
+      font-size: 10px; font-weight: 800; color: var(--gold-dark);
+      letter-spacing: 0.12em;
+    }
+    .cochrane-explain p {
+      font-size: 12px; color: #555; line-height: 1.65;
+    }
+    .cochrane-explain .ce-emphasis {
+      margin-top: 8px; font-size: 11.5px; font-weight: 700;
+      color: var(--dark);
+      padding: 6px 10px; background: rgba(197,176,152,0.2);
+      border-radius: 6px;
+    }
+
+    /* 전동칫솔 카드 */
+    .electric-card {
+      background: #fff; border: 1px solid var(--mid);
+      border-radius: 12px; overflow: hidden; margin-bottom: 12px;
+    }
+    .electric-card .ec-header {
+      background: var(--dark); padding: 12px 16px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .electric-card .ec-icon { font-size: 22px; }
+    .electric-card .ec-title {
+      font-size: 14px; font-weight: 800; color: #fff;
+    }
+    .electric-card .ec-sub {
+      font-size: 10px; color: var(--gold); margin-top: 1px;
+    }
+    .electric-card .ec-body { padding: 14px 16px; }
+    .stat-row {
+      display: flex; gap: 8px; margin-bottom: 10px;
+    }
+    .stat-box {
+      flex: 1; background: var(--mid); border-radius: 10px;
+      padding: 10px 8px; text-align: center;
+    }
+    .stat-box .stat-num {
+      font-size: 22px; font-weight: 900; color: var(--dark);
+      line-height: 1;
+    }
+    .stat-box .stat-num span { font-size: 13px; }
+    .stat-box .stat-label {
+      font-size: 10px; color: #777; margin-top: 3px; line-height: 1.35;
+    }
+    .electric-card p {
+      font-size: 12px; color: #555; line-height: 1.6;
+    }
+    .electric-note {
+      margin-top: 10px; padding: 8px 10px;
+      background: rgba(197,176,152,0.15);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 6px 6px 0;
+      font-size: 11.5px; color: #666;
+    }
+
+    footer {
+      background: #1a1b1b; color: rgba(255,255,255,0.35);
+      padding: 18px 20px; font-size: 10px; text-align: center; line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="clinic">SEOUL WOONGCHEON DENTAL CLINIC</div>
+  <h1>올바른 칫솔질</h1>
+</header>
+
+<div class="hero">
+  <div class="badge">EVIDENCE-BASED</div>
+  <h2>하루 3번, 제대로<br>닦는 법이 따로 있습니다</h2>
+  <p>잘못된 칫솔질 모 两당지 을싹이 치태가 닦아도 치태가 남습니다.<br>변형 바스법(Modified Bass Method)으로 올바르게 닦아보세요.</p>
+</div>
+
+<!-- 4단계 -->
+<section>
+  <div class="sec-label">STEP BY STEP</div>
+  <div class="sec-title">변형 바스법 4단계</div>
+
+  <!-- 45도 일러스트 박스 -->
+  <div class="illust-box">
+    <svg class="illust-svg" width="56" height="56" viewBox="0 0 56 56">
+      <circle cx="28" cy="28" r="27" fill="none" stroke="#C5B098" stroke-width="1.5"/>
+      <rect x="24" y="10" width="6" height="30" rx="3" fill="#C5B098" transform="rotate(-45 28 28)"/>
+      <circle cx="28" cy="36" r="10" fill="none" stroke="rgba(197,176,152,0.4)" stroke-width="1.5"/>
+      <text x="28" y="52" text-anchor="middle" font-size="8" fill="rgba(197,176,152,0.7)" font-family="sans-serif">45°</text>
+    </svg>
+    <p><strong>핵심 원리:</strong> 칫솔모가 치아와 잇몸 사이 틈(치은열구)에 들어가야 치태가 제거됩니다. 그러려면 칫솔을 45도 기울여야 합니다.</p>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h3>칫솔을 45° 각도로</h3>
+        <p>칫솔모 끝이 치아와 잇몸 경계에 닿도록 45도 각도로 기울입니다. 잇몸 쪽을 향해야 합니다.</p>
+        <div class="tip">💡 거울을 보면서 각도를 확인하세요</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h3>짧게 앞뒤로 진동</h3>
+        <p>치아 2~3개 구역으로 나눠, 칫솔을 제자리에서 짧게 앞뒤 진동합니다. 세게 문지르지 않아도 됩니다.</p>
+        <div class="tip">💡 진동 10회 후 옆으로 이동하세요</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h3>잇몸 → 씹는면 방향으로 쓸기</h3>
+        <p>진동 후 칫솔을 잇몸에서 치아 씹는면 방향으로 쓸어올립니다. 이 동작으로 치태가 밖으로 나옵니다.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h3>안쪽 면 · 씹는 면 순서대로</h3>
+        <p>바깥면 → 안쪽면 → 씹는면 순서로 반복합니다. 특히 안쪽 면을 자주 놓칩니다. 앞니 안쪽은 칫솔을 세워서 닦으세요.</p>
+        <div class="tip">💡 전체 닦는 시간: 최소 2분 권장</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cochrane 근거 -->
+<section>
+  <div class="sec-label">EVIDENCE</div>
+  <div class="sec-title">과학적 근거</div>
+
+  <!-- 코크란 리뷰 설명 박스 -->
+  <div class="cochrane-explain">
+    <div class="ce-header">
+      <div class="ce-icon">📚</div>
+      <div class="ce-label">코크란 리뷰(Cochrane Review)란?</div>
+    </div>
+    <p>
+      코크란 리뷰는 전 세계 의료 연구를 종합해 "어떤 치료·방법이 실제로 효과가 있는가"를 객관적으로 판단하는
+      <strong>근거 중심 의학(EBM)의 최고 기준</strong>입니다. 수십~수백 개의 임상시험을 한꺼번에 분석(메타분석)하여
+      특정 제품이나 기관의 이해관계 없이 결론을 내립니다. WHO·각국 의료 가이드라인의 근거로 사용됩니다.
+    </p>
+    <div class="ce-emphasis">✔ 이 페이지의 모든 근거는 코크란 리뷰에 기반한 내용입니다.</div>
+  </div>
+
+  <div class="evidence-box">
+    <div class="ev-label">COCHRANE REVIEW — Sicilia 2020</div>
+    <p>"변형 바스법은 치은열구(잇몸 틈)의 치태 제거에 현재까지 연구된 방법 중 가장 효과적입니다. 올바른 칫솔질 기법은 잇몸 건강 유지에 직접적으로 기여합니다."</p>
+    <div class="ev-source">Sicilia A. et al., Cochrane Systematic Review, 2020</div>
+  </div>
+</section>
+
+<!-- 전동칫솔 섹션 -->
+<section>
+  <div class="sec-label">ELECTRIC TOOTHBRUSH</div>
+  <div class="sec-title">전동칫솔, 얼마나 효과적일까요?</div>
+
+  <div class="electric-card">
+    <div class="ec-header">
+      <div class="ec-icon">⚡</div>
+      <div>
+        <div class="ec-title">수동 칫솔 대비 전동칫솔 효과</div>
+        <div class="ec-sub">Cochrane Review 2014 · 56개 임상연구 · 4,624명 분석</div>
+      </div>
+    </div>
+    <div class="ec-body">
+      <div class="stat-row">
+        <div class="stat-box">
+          <div class="stat-num">11<span>%</span></div>
+          <div class="stat-label">치태 감소<br>(사용 1~3개월)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">21<span>%</span></div>
+          <div class="stat-label">치태 감소<br>(3개월 이상 사용)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">11<span>%</span></div>
+          <div class="stat-label">잇몸 출혈 감소<br>(3개월 이상)</div>
+        </div>
+      </div>
+      <p>
+        전동칫솔(특히 <strong>회전-진동형</strong>)은 수동 칫솔보다 단기·장기 모두에서 치태 제거와 잇몸 건강 개선에
+        통계적으로 유의미한 효과를 보였습니다. 부작용은 일시적이고 경미한 수준으로 보고되었습니다.
+      </p>
+      <div class="electric-note">
+        ⚡ <strong>단, 올바른 사용법이 전제:</strong> 전동칫솔도 잇몸선에 45°로 대고, 치아별로 구역을 나눠 사용해야 최대 효과를 냅니다. 수동 칫솔처럼 강하게 문지르면 오히려 잇몸이 상할 수 있습니다.
+      </div>
+    </div>
+  </div>
+
+  <div class="evidence-box">
+    <div class="ev-label">COCHRANE REVIEW — Yaacob 2014</div>
+    <p>"전동칫솔은 단기(1~3개월)에 치태를 11%, 장기(3개월이상)이더 감소시키며, 잇몸 출혈 지수도 장기적으로 11% 개선되었다. 회전-진동형(Oscillating-rotating) 방식이 가장 일관된 효과를 보였다."</p>
+    <div class="ev-source">Yaacob M. et al. Powered versus manual toothbrushing for oral health. Cochrane Database Syst Rev. 2014;6:CD002281.</div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="sec-label">FAQ</div>
+  <div class="sec-title">자주 묻는 질문</div>
+
+  <details>
+    <summary>하루 몇 번 닦아야 하나요?</summary>
+    <div class="faq-ans">최소 하루 2회(아침·잠자리 전)이며, <strong>잠자리 전 칫솔질이 가장 중요</strong>합니다. 자는 동안 타액 분비가 줄어 세균이 증식하기 쉽기 때문입니다.</div>
+  </details>
+
+  <details>
+    <summary>얼마나 오래 닦아야 하나요?</summary>
+    <div class="faq-ans">최소 <strong>2분</strong>을 권장합니다. 연구에 따르면 평균 45초만 닦는 경우가 많으며, 2분 이상 닦을 때 치태 제거율이 유의미하게 높아집니다.</div>
+  </details>
+
+  <details>
+    <summary>칫솔모가 빨리 벌어지는 이유는?</summary>
+    <div class="faq-ans"><strong>너무 세게 문지르기 때문</strong>입니다. 칫솔질은 힘이 아니라 각도와 방법이 중요합니다. 칫솔모는 3개월마다 교체하고, 큐라프록스처럼 초미세모 제품을 사용하면 잇몸 손상 없이 효과적으로 닦을 수 있습니다.</div>
+  </details>
+
+  <details>
+    <summary>치약은 얼마나 쓰는 게 맞나요?</summary>
+    <div class="faq-ans">성인은 <strong>완두콩 크기(약 1~1.5cm)</strong>, 어린이는 쌀알 크기로 충분합니다. 과도한 치약은 불소를 희석시켜 효과를 줄입니다. 칫솔질 후 2~3번만 헹구세요.</div>
+  </details>
+</section>
+
+<!-- 추천 제품 -->
+<section>
+  <div class="sec-label">RECOMMENDED</div>
+  <div class="sec-title">추천 칫솔</div>
+  <div class="product-card">
+    <div class="product-icon">🪥</div>
+    <div>
+      <h4>Curaprox CS 5460 Ultra Soft</h4>
+      <p>5,460개 초미세모 · 직경 0.1mm<br>잇몸 자극 없이 치태를 효과적 제거</p>
+      <div class="price">8,500원 / 1개</div>
+    </div>
+  </div>
+</section>
+
+<!-- 참고 영상 -->
+<section>
+  <div class="sec-label">VIDEOS</div>
+  <div class="sec-title">참고 영상</div>
+  <div class="video-card">
+    <div class="video-thumb">▶</div>
+    <div>
+      <h4>저 망해도 좋으니 양치 이렇게만 하세요</h4>
+      <p>치과의사 이상수 · 조회수 171만+ · 핵심 정리</p>
+    </div>
+  </div>
+  <div class="video-card">
+    <div class="video-thumb">▶</div>
+    <div>
+      <h4>대한치과의사협회 공식 칫솔질 영상</h4>
+      <p>변형 바스법 시범 · 공신력 있는 교육 자료</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2>칫솔질 교육 상담</h2>
+  <p>내 칫솔질이 맞는지 확인하고 싶다면<br>다음 내원 시 말씀해 주세요.</p>
+  <a class="cta-btn" href="tel:02-0000-0000">📞 진료 예약하기</a>
+</div>
+
+<footer>
+  서울웅천치과의원 · 본 내용은 의료 교육 목적으로 제공됩니다
+</footer>
+
+</body>
+</html>

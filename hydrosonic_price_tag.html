@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Hydrosonic Easy 가격표 — 85×65mm 인쇄용</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    background: #E8E0D8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    gap: 32px;
+  }
+
+  .page-title {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  /* ── 실물 크기: 85mm × 65mm = 321px × 246px @96dpi ── */
+  /* 인쇄 시: @96dpi 기준 1mm = 3.78px */
+
+  .card-wrap {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* ══════════════════════════════════
+     카드 A — 정석형 (제품명+가격+모드)
+  ══════════════════════════════════ */
+  .card {
+    width: 321px;    /* 85mm */
+    height: 246px;   /* 65mm */
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  /* ── 카드 A: 큐라프록스 레드 강조 ── */
+  .card-a {
+    background: #1A1A1A;
+  }
+  .card-a .top-bar {
+    background: #E8333C;
+    height: 8px;
+    width: 100%;
+  }
+  .card-a .brand {
+    padding: 10px 14px 4px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .card-a .brand-logo {
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #E8333C;
+    border: 1.5px solid #E8333C;
+    padding: 2px 6px;
+    border-radius: 2px;
+  }
+  .card-a .brand-sub {
+    font-size: 8px;
+    color: #888;
+    letter-spacing: 1px;
+  }
+  .card-a .product-name {
+    padding: 2px 14px 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+  }
+  .card-a .product-sub {
+    padding: 1px 14px 0;
+    font-size: 9px;
+    color: #AAA;
+    letter-spacing: 0.5px;
+  }
+  /* 3모드 아이콘 */
+  .card-a .modes {
+    display: flex;
+    gap: 6px;
+    padding: 8px 14px 0;
+  }
+  .mode-chip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+  }
+  .mode-dot {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 7px;
+    font-weight: 700;
+    color: white;
+  }
+  .mode-dot.start  { background: #5B8FA8; }
+  .mode-dot.clean  { background: #E8333C; }
+  .mode-dot.smile  { background: #C5B098; }
+  .mode-label {
+    font-size: 7px;
+    color: #777;
+    letter-spacing: 0.3px;
+  }
+  .mode-speed {
+    font-size: 6.5px;
+    color: #555;
+  }
+  .card-a .divider {
+    height: 1px;
+    background: #2E2E2E;
+    margin: 8px 14px 0;
+  }
+  .card-a .price-row {
+    padding: 6px 14px 0;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+  .card-a .price-label {
+    font-size: 8px;
+    color: #888;
+  }
+  .card-a .price-val {
+    font-size: 22px;
+    font-weight: 900;
+    color: #E8333C;
+    letter-spacing: -0.5px;
+  }
+  .card-a .price-unit {
+    font-size: 11px;
+    color: #AAA;
+    font-weight: 300;
+  }
+  .card-a .rec-badge {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    background: #E8333C;
+    color: white;
+    font-size: 7px;
+    font-weight: 700;
+    padding: 3px 7px;
+    border-radius: 2px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── 카드 B: 화이트 미니멀 ── */
+  .card-b {
+    background: #FFFFFF;
+    border: 1.5px solid #E0D8D0;
+  }
+  .card-b .left-accent {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 6px;
+    background: #E8333C;
+  }
+  .card-b .content {
+    padding: 14px 14px 14px 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .card-b .top {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .card-b .brand-text {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #E8333C;
+    text-transform: uppercase;
+  }
+  .card-b .name {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1A1A1A;
+    letter-spacing: 0.5px;
+    line-height: 1.1;
+  }
+  .card-b .sub {
+    font-size: 8.5px;
+    color: #888;
+    margin-top: 1px;
+  }
+  .card-b .modes-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .card-b .mode-item {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+  .card-b .mode-circle {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+  .card-b .mode-text {
+    font-size: 7.5px;
+    color: #666;
+  }
+  .card-b .bottom {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  .card-b .price-area {
+    display: flex;
+    align-items: baseline;
+    gap: 3px;
+  }
+  .card-b .price-num {
+    font-size: 24px;
+    font-weight: 900;
+    color: #E8333C;
+    letter-spacing: -1px;
+  }
+  .card-b .price-won {
+    font-size: 12px;
+    color: #999;
+    font-weight: 300;
+  }
+  .card-b .rec {
+    font-size: 7.5px;
+    color: #888;
+    text-align: right;
+    line-height: 1.4;
+  }
+  .card-b .rec strong {
+    color: #E8333C;
+    font-weight: 700;
+  }
+
+  /* ── 카드 C: 교체헤드 가격표 ── */
+  .card-c {
+    background: #F8F6F3;
+    border: 1px solid #DDD5C8;
+  }
+  .card-c .header-bar {
+    background: #323333;
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .card-c .header-title {
+    font-size: 10px;
+    font-weight: 700;
+    color: #C5B098;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .card-c .header-brand {
+    font-size: 8px;
+    color: #888;
+    letter-spacing: 1px;
+  }
+  .card-c .items {
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .card-c .item-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #E8E0D8;
+    padding-bottom: 5px;
+  }
+  .card-c .item-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .card-c .item-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
+    flex-shrink: 0;
+  }
+  .card-c .item-name {
+    font-size: 9px;
+    color: #444;
+    flex: 1;
+    line-height: 1.3;
+  }
+  .card-c .item-price {
+    font-size: 10px;
+    font-weight: 700;
+    color: #E8333C;
+    white-space: nowrap;
+  }
+  .card-c .footer-note {
+    padding: 0 14px 8px;
+    font-size: 7.5px;
+    color: #AAA;
+  }
+
+  /* ── 인쇄 가이드 대식 ── */
+  .card-label {
+    font-size: 12px;
+    color: #888;
+    text-align: center;
+    margin-bottom: 6px;
+  }
+  .card-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ── 인쇄 예석── */
+  @media print {
+    body { background: white; padding: 10mm; }
+    .page-title, .card-label { display: none; }
+    .card-wrap { gap: 8mm; }
+    .card { box-shadow: none; border: 0.5px solid #CCC; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-title">
+  Hydrosonic Easy 가격표 — 85×65mm 인쇄용 (3가지 버전)<br>
+  <small style="color:#AAA">인쇄 야 입단 · 셅트형 카드홀더에 삽장</small>
+</div>
+
+<div class="card-wrap">
+
+  <!-- ══ 카드 A: 다크프록중 ══ -->
+  <div class="card-group">
+    <div class="card-label">A — 다크 프리미엄</div>
+    <div class="card card-a">
+      <div class="top-bar"></div>
+      <div class="brand">
+        <span class="brand-logo">CURAPROX</span>
+        <span class="brand-sub">SWISS MADE</span>
+      </div>
+      <div class="product-name">Hydrosonic Easy</div>
+      <div class="product-sub">소닉 전동칫솔 · 3단계 모드</div>
+      <div class="modes">
+        <div class="mode-chip">
+          <div class="mode-dot start">●</div>
+          <div class="mode-label">START</div>
+          <div class="mode-speed">44,000/분</div>
+        </div>
+        <div class="mode-chip">
+          <div class="mode-dot clean">●</div>
+          <div class="mode-label">CLEAN</div>
+          <div class="mode-speed">64,000/분</div>
+        </div>
+        <div class="mode-chip">
+          <div class="mode-dot smile">●</div>
+          <div class="mode-label">SMILE</div>
+          <div class="mode-speed">84,000/분</div>
+        </div>
+        <div style="flex:1"></div>
+        <div style="text-align:right; padding-top:2px;">
+          <div style="font-size:7px; color:#555; line-height:1.5;">CUREN® 필라멘트<br>충전 배터리 약 2주<br>방수 설계</div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="price-row">
+        <span class="price-label">판매가</span>
+        <span class="price-val">__,___</span>
+        <span class="price-unit">원</span>
+      </div>
+      <div class="rec-badge">원장 추천</div>
+    </div>
+  </div>
+
+  <!-- ══ 카드 B: 화이트 미니멀 ══ -->
+  <div class="card-group">
+    <div class="card-label">B — 화이트 미니멀</div>
+    <div class="card card-b">
+      <div class="left-accent"></div>
+      <div class="content">
+        <div class="top">
+          <div class="brand-text">CURAPROX</div>
+          <div class="name">Hydrosonic<br>Easy</div>
+          <div class="sub">소닉 전동칫솔 · Swiss Made</div>
+          <div class="modes-row">
+            <div class="mode-item">
+              <div class="mode-circle" style="background:#5B8FA8;"></div>
+              <span class="mode-text">Start 44K</span>
+            </div>
+            <div class="mode-item">
+              <div class="mode-circle" style="background:#E8333C;"></div>
+              <span class="mode-text">Clean 64K</span>
+            </div>
+            <div class="mode-item">
+              <div class="mode-circle" style="background:#C5B098;"></div>
+              <span class="mode-text">Smile 84K</span>
+            </div>
+          </div>
+        </div>
+        <div class="bottom">
+          <div class="price-area">
+            <span class="price-num">__,___</span>
+            <span class="price-won">원</span>
+          </div>
+          <div class="rec">
+            <strong>치과의사 추천</strong><br>
+            교체헤드 별도 문의
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ 두 번째 줄: 교체헤드 가격표 ══ -->
+<div class="card-wrap" style="margin-top:8px;">
+  <div class="card-group">
+    <div class="card-label">C — 교체 브러시 헤드 가격표</div>
+    <div class="card card-c">
+      <div class="header-bar">
+        <span class="header-title">교체 브러시 헤드</span>
+        <span class="header-brand">CURAPROX Hydrosonic</span>
+      </div>
+      <div class="items">
+        <div class="item-row">
+          <div class="item-dot" style="background:#5B8FA8;"></div>
+          <div class="item-name">Sensitive<br><span style="color:#AAA;font-size:7px;">민감한 잇몸 · 부드러운 세정</span></div>
+          <div class="item-price">__,___원</div>
+        </div>
+        <div class="item-row">
+          <div class="item-dot" style="background:#E8333C;"></div>
+          <div class="item-name">Power<br><span style="color:#AAA;font-size:7px;">건강한 잇몸 · 강력 플라크 제거</span></div>
+          <div class="item-price">__,___원</div>
+        </div>
+        <div class="item-row">
+          <div class="item-dot" style="background:#888;"></div>
+          <div class="item-name">Single Tuft<br><span style="color:#AAA;font-size:7px;">임플란트·교정 주변 집중 세정</span></div>
+          <div class="item-price">__,___원</div>
+        </div>
+      </div>
+      <div class="footer-note">※ 3~6개월마다 교체 권장 · 모든 Hydrosonic 기종 호환</div>
+    </div>
+  </div>
+</div>
+
+<div style="font-size:11px; color:#999; text-align:center; margin-top:24px; line-height:1.8;">
+  ✂ 점선을 따라 재단 후 85×65mm 텐트형 카드홀더에 삽입<br>
+  가격 표시 부분(<code>__,___</code>)은 인쇄 전 실제 판매가로 교체하세요<br>
+  <strong>추천 인쇄:</strong> A4 광택지 또는 무광 코팅지 · 컬러 인쇄
+</div>
+
+</body>
+</html>
